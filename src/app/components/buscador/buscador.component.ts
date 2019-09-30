@@ -10,6 +10,8 @@ import { HeroesService } from '../../services/heroes.service';
 export class BuscadorComponent implements OnInit {
 
   heroes:any[] = []
+  termino:string; 
+
 
   constructor( private activatedRoute:ActivatedRoute,
                private _heroesService:HeroesService ) {
@@ -20,6 +22,7 @@ export class BuscadorComponent implements OnInit {
 
     this.activatedRoute.params.subscribe(  params => {
       //console.log(params['termino']);
+      this.termino = params['termino'];
       this.heroes = this._heroesService.buscarHeroes( params['termino']);
       console.log( this.heroes )
     })
